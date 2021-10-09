@@ -1,0 +1,33 @@
+<div class="container">
+    <h2 class="text-center">Customer List</h2>
+    <div>
+        
+        <div class="button">
+        <a routerLink = "add" class="my-1 btn btn-success mx-3">add customer +</a></div>
+         <button class="my-1 btn btn-primary mx-3" routerLink="../">Back</button>
+</div>
+<table class="table table-striped border border-secondary">
+    <thead>
+    <tr>
+        <th>id</th>
+        <th>Name</th>
+        <th>Address</th>
+        <th>Delete</th>
+        <th>Edit</th>
+    </tr>
+</thead>
+<tbody>
+    <tr *ngFor="let customerList of customerList" appHighlight>
+        <td>{{customerList.id}}</td>
+        <td>{{customerList.name}}</td>
+        <td>{{customerList.address}}</td>
+        <td>
+            <button (click)="deleteStudent(studentListItem.id)" class="btn btn-danger">Delete</button>
+          </td>
+          <td>
+            <button (click)="deleteStudent(studentListItem.id)" class="btn btn-danger">Edit</button>
+          </td>
+    </tr>
+</tbody>
+</table>
+</div>

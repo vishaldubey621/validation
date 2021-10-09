@@ -1,0 +1,78 @@
+<div class="container">
+  <h2 class="text-center">Customer form</h2>
+  
+
+<form [formGroup]="customerForm">
+
+  <div class="form-group">
+    <label for="exampleInputEmail1">from</label>
+    <input type="date" class="form-control" id="exampleInputName1" aria-describedby="NameHelp" placeholder="Enter Name"
+       formControlName="from"> 
+       <span class="text-danger"
+       *ngIf="(form.from.touched || submitted) && form.from.errors?.required">
+       from date is Required
+   </span>
+   <div class="text-danger"
+           *ngIf="(form.from.touched || submitted) && form.from.errors?.fromDateMoreThanLessDate">
+           from date should be less than to date
+    </div>
+    <div class="text-danger"
+           *ngIf="(form.from.touched || submitted) && form.from.errors?.fromDateMoreThanCurrentDate">
+           From Date must always be more than to ‘Current Date’
+    </div>
+    </div>
+
+
+
+  <div class="form-group">
+    <label for="exampleInputEmail1">to</label>
+    <input type="date" class="form-control" id="exampleInputName1" aria-describedby="NameHelp" placeholder="Enter Name"
+       formControlName="to"> 
+  </div>
+  <span class="text-danger"
+  *ngIf="(form.to.touched || submitted) && form.to.errors?.required">
+  to date is Required
+ </span>
+ <div class="text-danger"
+           *ngIf="(form.from.touched || submitted) && form.from.errors?.toDateMoreThanLessDate">
+           To Date must always be Greater than to From Date
+    </div>
+    <div class="text-danger"
+           *ngIf="(form.from.touched || submitted) && form.from.errors?.toDateMoreThanCurrentDate">
+           To Date must always be Greater than From Date or current Date
+    </div>
+    <div class="text-danger"
+    *ngIf="(form.from.touched || submitted) && form.from.errors?.toDateSamefromDate">
+    To date Should not equall to From Date
+</div>
+ 
+
+   
+    <div class="form-group">
+      <label for="exampleInputEmail1">Name</label>
+      <input type="text" class="form-control" id="exampleInputName1" aria-describedby="NameHelp" placeholder="Enter Name"
+         formControlName="name"> 
+    
+        <!-- <div *ngIf="customerFormControl.name.invalid && customerFormControl.name.touched" class="alert alert-danger">
+            <div *ngIf="customerFormControl.name.errors?.required">
+              Name is required.
+            </div>
+          </div> -->
+    </div>
+
+    <div class="form-group">
+      <label for="exampleInputPassword1">Address</label>
+      <input type="text" class="form-control" id="exampleInputAddress1" placeholder="Address" formControlName="address">
+      <!-- <div *ngIf="customerFormControl.address.invalid && customerFormControl.address.touched" class="alert alert-danger">
+        <div *ngIf="customerFormControl.address.errors?.required">
+          address is required is required.
+        </div>
+    </div> -->
+    <button type="submit" class="btn btn-primary" (click)="onSubmit()">Submit</button>
+    <button class="my-1 btn btn-secondary mx-3" routerLink="../">show List</button>
+    </div>
+  
+    <input type="date" class="form-control" id="exampleInputName1" aria-describedby="NameHelp" placeholder="past date"
+    formControlName="on" min={{minDate}}>
+  </form>
+</div>
